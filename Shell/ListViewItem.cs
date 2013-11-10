@@ -66,7 +66,6 @@ namespace Shell
         {
             get
             {
-                var vm = new ViewModel();
                 this._bindCommand = new Command(x => Open());
                 return this._bindCommand;
             }
@@ -74,7 +73,7 @@ namespace Shell
 
         public void Open()
         {
-            _listViewItemState.Open();
+             _listViewItemState.Open(Name);
         }
 
         public ListViewItem(string name,string type, long size, DateTime lastWriteTime)

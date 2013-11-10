@@ -43,7 +43,7 @@
             <Separator Style="{StaticResource MenuSeparator}"/>
             <Button Style="{StaticResource MenuButtons}" />
             <Separator Style="{StaticResource MenuSeparator}"/>
-            <ComboBox Width="71" Template="{StaticResource ComboBoxControlTamplate}"/>
+            <ComboBox Width="130" Template="{StaticResource ComboBoxControlTamplate}"/>
         </StackPanel>
         <Separator Grid.Row="3" Grid.ColumnSpan="3" Width="auto"/>
         <Grid Grid.Row="4" Grid.Column="0" Background="Beige">

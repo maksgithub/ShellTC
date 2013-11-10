@@ -9,6 +9,6 @@ namespace Shell.State
 
     public interface IState
     {
-        void Open();
+        void Open(string currentPath);
     }
 }

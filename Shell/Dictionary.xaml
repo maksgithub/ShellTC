@@ -3,7 +3,7 @@
    
     <ControlTemplate x:Key="ComboBoxControlTamplate" TargetType="ComboBox">
         <ComboBox ItemsSource="{Binding Path=ComboBoxItems}" Width="400" Height="25" Margin="2.5,2.5,2.5,2.5" 
-                  SelectedItem="{Binding Path=SelectedDisc}" SelectedIndex="0"/>
+                  SelectedItem="{Binding Path=SelectedDisc}" SelectedIndex="1"/>
     </ControlTemplate>
     
     <Style TargetType="ListView" x:Key="ListViewStyle">

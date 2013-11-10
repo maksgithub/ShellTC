@@ -9,7 +9,7 @@ namespace Shell.State
 {
     public class StateFile:IState
     {
-        public void Open()
+        public void Open(string currentFile)
         {
             MessageBox.Show("File Double Click");
         }

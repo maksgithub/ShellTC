@@ -15,30 +15,25 @@ namespace Shell
     {
         private string _selectedDisc;
         private ListViewItem _currentListViewItem;
-        private string _currentDirectory;
-        private string _currentPath;
-        private static string _directory;
-        private static string _selectedFolder;
+        private static List<string> _pathHistory;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public string currentPass
+        public static string CurrentPath
         {
             get
             {
-                return _currentPath;
+                return _pathHistory.Last();
             }
-            set 
+            set
             {
-                if (_currentPath == null)
-                    _currentPath = SelectedDirectory;
-                if(_selectedDisc!=null)
-                    _currentPath += "/"+SelectedDirectory;
+                if (_pathHistory == null)
+                {
+                    _pathHistory = new List<string>();
+                }
+                _pathHistory.Add(value);
             }
         }
 
-        public string SelectedDirectory { get; set; }
-        
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ListViewItem CurrentListViewItem
         {
@@ -49,37 +44,12 @@ namespace Shell
             set
             {
                 _currentListViewItem = value;
-                CurrentDirectory = CurrentListViewItem.Name;
                 NotifyPropertyChanged("CurrentListViewItem");
             }
         }
 
-        public string CurrentDirectory
-        {
-            get
-            {
-                return _directory;
-            }
-            set
-            {
-                _directory = CurrentListViewItem.Name;
-                NotifyPropertyChanged("CurrentDirectory");
-            }
-        }
-
-        public string SelectedFolder
-        {
-            get
-            {
-                return _selectedFolder;
-            }
-            set
-            {
-                _selectedFolder = _currentListViewItem.Name;
-            }
-        }
-
-        public string SelectedDisc
+     
+        public string  SelectedDisc
         {
             get
             {
@@ -87,8 +57,7 @@ namespace Shell
             }
             set
             {
-                _selectedDisc = value;
-                _directory = value;
+                CurrentPath = _selectedDisc = value;
                 NotifyPropertyChanged("ListViewItems");
             }
         }
@@ -97,11 +66,11 @@ namespace Shell
         {
             get
             {
-                return OpenFolder(_selectedDisc);
+                return OpenFolder(CurrentPath);
             }
         }
 
-        public List<ListViewItem> OpenFolder(string pathToFolder)
+        public static List<ListViewItem> OpenFolder(string pathToFolder)
         {
             var listViewItems = new List<ListViewItem>();
             var directoryInfo = new DirectoryInfo(pathToFolder);
