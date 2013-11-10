@@ -12,7 +12,7 @@ namespace Shell.State
     {
         public void Open(string currentDirectory)
         {
-            ViewModel.OpenFolder(string.Format("{0}{1}", ViewModel.CurrentPath, currentDirectory));
+            ViewModel.Model.CurrentPath = string.Format("{0}{1}", ViewModel.Model.CurrentPath, currentDirectory);
             MessageBox.Show("Open folder");
         }
     }

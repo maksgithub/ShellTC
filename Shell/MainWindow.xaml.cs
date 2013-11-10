@@ -27,7 +27,7 @@ namespace Shell
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel();
+            this.DataContext = ViewModel.Model = new ViewModel();
         }        
     }
 }
