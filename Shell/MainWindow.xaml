@@ -41,7 +41,7 @@
             <Separator Style="{StaticResource MenuSeparator}"/>
             <Button Style="{StaticResource MenuButtons}"/>
             <Separator Style="{StaticResource MenuSeparator}"/>
-            <Button Style="{StaticResource MenuButtons}"/>
+            <Button Style="{StaticResource MenuButtons}" />
             <Separator Style="{StaticResource MenuSeparator}"/>
             <ComboBox Width="71" Template="{StaticResource ComboBoxControlTamplate}"/>
         </StackPanel>
