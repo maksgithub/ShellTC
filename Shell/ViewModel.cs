@@ -16,8 +16,9 @@ namespace Shell
         private string _selectedDisc;
         private ListViewItem _currentListViewItem;
         private static List<string> _pathHistory;
+        public static ViewModel Model;
 
-        public static string CurrentPath
+        public string CurrentPath
         {
             get
             {
@@ -30,6 +31,7 @@ namespace Shell
                     _pathHistory = new List<string>();
                 }
                 _pathHistory.Add(value);
+                NotifyPropertyChanged("ListViewItems");
             }
         }
 
@@ -58,7 +60,7 @@ namespace Shell
             set
             {
                 CurrentPath = _selectedDisc = value;
-                NotifyPropertyChanged("ListViewItems");
+                //NotifyPropertyChanged("ListViewItems");
             }
         }
 
