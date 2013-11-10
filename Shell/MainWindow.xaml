@@ -33,7 +33,7 @@
         </StackPanel>
         <Separator Grid.Row="1" Grid.ColumnSpan="3" Width="auto"/>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Background="Beige">
-            <Button Style="{StaticResource MenuButtons}" Background="Beige"/>
+            <Button Style="{StaticResource MenuButtons}" Content="Back" Command="{Binding CommandBackward}"/>
             <Separator Style="{StaticResource MenuSeparator}"/>
             <Button Style="{StaticResource MenuButtons}"/>
             <Separator Style="{StaticResource MenuSeparator}"/>
@@ -47,7 +47,7 @@
         </StackPanel>
         <Separator Grid.Row="3" Grid.ColumnSpan="3" Width="auto"/>
         <Grid Grid.Row="4" Grid.Column="0" Background="Beige">
-            <TextBox Text="{Binding CurrentDirectory}"/>
+            <TextBox Text="{Binding CurrentPathForTexBox,Mode= OneWay}"/>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="2" Background="Beige">
             <Grid.ColumnDefinitions>
