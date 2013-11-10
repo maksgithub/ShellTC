@@ -73,7 +73,8 @@ namespace Shell
 
         public void Open()
         {
-             _listViewItemState.Open(Name);
+            ViewModel.PathBackwardHistory.Clear();
+            _listViewItemState.Open(Name);
         }
 
         public ListViewItem(string name,string type, long size, DateTime lastWriteTime)

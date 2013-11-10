@@ -16,8 +16,10 @@ namespace Shell
         private string _selectedDisc;
         private ListViewItem _currentListViewItem;
         private static List<string> _pathHistory;
+        public static List<string> PathBackwardHistory = new List<string>();
         public static ViewModel Model;
         private ICommand _commandBackward;
+        private ICommand _commandForward;
         public event PropertyChangedEventHandler PropertyChanged;
 
 
@@ -41,6 +43,7 @@ namespace Shell
                 _pathHistory.Add(value);
                 NotifyPropertyChanged("ListViewItems");
                 NotifyPropertyChanged("CurrentPathForTexBox");
+                NotifyPropertyChanged("SelectedDiskIndex");
             }
         }
 
@@ -66,8 +69,8 @@ namespace Shell
             }
         }
 
-     
-        public string  SelectedDisc
+
+        public string SelectedDisc
         {
             get
             {
@@ -93,6 +96,15 @@ namespace Shell
             {
                 this._commandBackward = new Command(x => Backward());
                 return this._commandBackward;
+            }
+        }
+
+        public ICommand CommandForward
+        {
+            get
+            {
+                this._commandForward = new Command(x => Forward());
+                return this._commandForward;
             }
         }
 
@@ -128,10 +140,20 @@ namespace Shell
         {
             if (_pathHistory.Count > 1)
             {
+                PathBackwardHistory.Add(_pathHistory.Last());
                 _pathHistory.RemoveAt(_pathHistory.Count - 1);
-                NotifyPropertyChanged("ListViewItems");
-                NotifyPropertyChanged("SelectedDiskIndex");
+                var currentPath = _pathHistory.Last();
+                _pathHistory.RemoveAt(_pathHistory.Count - 1);
+                CurrentPath = currentPath;
+            }
+        }
 
+        public void Forward()
+        {
+            if (PathBackwardHistory.Count >= 1)
+            {
+                CurrentPath = PathBackwardHistory.Last();
+                PathBackwardHistory.RemoveAt(PathBackwardHistory.Count - 1);
             }
         }
 
