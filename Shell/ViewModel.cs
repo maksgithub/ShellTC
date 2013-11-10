@@ -60,7 +60,6 @@ namespace Shell
             set
             {
                 CurrentPath = _selectedDisc = value;
-                //NotifyPropertyChanged("ListViewItems");
             }
         }
 
@@ -92,7 +91,11 @@ namespace Shell
         {
             get 
             {
-                var logicalDiscs = Directory.GetLogicalDrives().ToList();
+                var logicalDiscs = new List<string>();
+                foreach (var diskName in Directory.GetLogicalDrives().ToList())
+                {
+                    logicalDiscs.Add(diskName.Substring(0, 2));
+                }
                 return logicalDiscs;
             }
         }
