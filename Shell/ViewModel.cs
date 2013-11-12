@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
+
 namespace Shell
 {
     public class ViewModel : INotifyPropertyChanged
@@ -20,6 +21,7 @@ namespace Shell
         public static ViewModel Model;
         private ICommand _commandBackward;
         private ICommand _commandForward;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
 
@@ -144,7 +146,8 @@ namespace Shell
                 _pathHistory.RemoveAt(_pathHistory.Count - 1);
                 var currentPath = _pathHistory.Last();
                 _pathHistory.RemoveAt(_pathHistory.Count - 1);
-                CurrentPath = currentPath;
+                if (currentPath!=null)
+                    CurrentPath = currentPath;
             }
         }
 
@@ -161,19 +164,32 @@ namespace Shell
         {
             var listViewItems = new List<ListViewItem>();
             var directoryInfo = new DirectoryInfo(pathToFolder);
+            var folderCreator = new FolderCreator();
+            var fileCreator = new FileCreator();
             foreach (var folder in directoryInfo.GetDirectories())
             {
-                listViewItems.Add(new ListViewItem(folder.Name, folder.LastWriteTime));
+                var listViewItemFolder = folderCreator.FactoryMethod();
+                listViewItemFolder.Name = folder.Name;
+                listViewItemFolder.LastWriteTime = folder.LastWriteTime;
+                listViewItemFolder.ListViewItemState =new State.StateFolder();
+                listViewItemFolder.Size = 0;
+                listViewItemFolder.Type = "<folder>";
+                listViewItems.Add(listViewItemFolder);
             }
             foreach (var file in directoryInfo.GetFiles())
             {
                 if (file.Exists)
-                    listViewItems.Add(new ListViewItem(file.Name, Path.GetExtension(file.Name), file.Length, file.LastWriteTime));
+                {
+                    var listViewItemFile = fileCreator.FactoryMethod();
+                    listViewItemFile.LastWriteTime = file.LastWriteTime;
+                    listViewItemFile.Name = file.Name;
+                    listViewItemFile.Size = file.Length;
+                    listViewItemFile.Type = Path.GetExtension(file.Name);
+                    listViewItems.Add(listViewItemFile);
+                }
             }
             return listViewItems;
         }
-
-
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {

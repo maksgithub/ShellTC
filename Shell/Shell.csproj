@@ -54,8 +54,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command.cs" />
+    <Compile Include="Creator.cs" />
+    <Compile Include="File.cs" />
+    <Compile Include="Folder.cs" />
+    <Compile Include="FolderCreator.cs" />
+    <Compile Include="FileCreator.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="State\IState.cs" />
-    <Compile Include="State\IWidget.cs" />
     <Compile Include="State\StateFile.cs" />
     <Compile Include="State\StateFolder.cs" />
     <Compile Include="ViewModel.cs" />

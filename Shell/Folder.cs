@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shell.State
+namespace Shell
 {
-    interface IWidget
+    public class Folder:ListViewItem
     {
-        void Open();
     }
 }

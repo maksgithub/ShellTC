@@ -25,10 +25,10 @@
         <ListView ItemsSource="{Binding Path=ListViewItems}" SelectedItem="{Binding CurrentListViewItem}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Имя" Width="130" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Тип" Width="50" DisplayMemberBinding="{Binding Type}"/>
-                    <GridViewColumn Header="Размер" Width="90" DisplayMemberBinding="{Binding Size}"/>
-                    <GridViewColumn Header="Дата изменения" Width="90" DisplayMemberBinding="{Binding LastWriteTime}"/>
+                    <GridViewColumn Header="Имя" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Тип" Width="100" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Размер" Width="100" DisplayMemberBinding="{Binding Size}"/>
+                    <GridViewColumn Header="Дата изменения" Width="120" DisplayMemberBinding="{Binding LastWriteTime}"/>
                 </GridView>
             </ListView.View>
             <ListView.ItemContainerStyle>

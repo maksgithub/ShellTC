@@ -18,49 +18,11 @@ namespace Shell
         private DateTime _lastWriteTime;
         private IState _listViewItemState;
 
-        public IState ListViewItemState 
-        {
-            get
-            {
-                return _listViewItemState;
-            }
-            set
-            {
-                _listViewItemState = value;
-            }
-        }
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            private set { value = _name; }
-        }
-        public string Type
-        {
-            get
-            {
-                return _type;
-            }
-            private set { value = _type; }
-        }
-        public long Size
-        {
-            get
-            {
-                return _size;
-            }
-            private set { value = _size; }
-        }
-        public DateTime LastWriteTime
-        {
-            get
-            {
-                return _lastWriteTime;
-            }
-            private set { value = _lastWriteTime; }
-        }
+        public IState ListViewItemState { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public long Size { get; set; }
+        public DateTime LastWriteTime { get; set; }
 
         public ICommand Command
         {
@@ -74,21 +36,21 @@ namespace Shell
         public void Open()
         {
             ViewModel.PathBackwardHistory.Clear();
-            _listViewItemState.Open(Name);
+            ListViewItemState.Open(Name);
         }
 
-        public ListViewItem(string name,string type, long size, DateTime lastWriteTime)
-        {
-            _name=name;
-            _type = type;
-            _size = size;
-            _lastWriteTime = lastWriteTime;
-            _listViewItemState = new StateFile();
-        }
-        public ListViewItem(string name, DateTime lastWriteTime)
-            : this(name, "<Папка>", 0,lastWriteTime)
-        {
-            _listViewItemState = new StateFolder();
-        }
+        //public ListViewItem(string name, string type, long size, DateTime lastWriteTime)
+        //{
+        //    _name = name;
+        //    _type = type;
+        //    _size = size;
+        //    _lastWriteTime = lastWriteTime;
+        //    _listViewItemState = new StateFile();
+        //}
+        //public ListViewItem(string name, DateTime lastWriteTime)
+        //    : this(name, "<Папка>", 0, lastWriteTime)
+        //{
+        //    _listViewItemState = new StateFolder();
+        //}
     }
 }
