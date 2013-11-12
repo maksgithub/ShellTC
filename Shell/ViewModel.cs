@@ -158,14 +158,26 @@ namespace Shell
         {
             var listViewItems = new List<ListViewItem>();
             var directoryInfo = new DirectoryInfo(pathToFolder);
+            var fileCreator = new FileCreator();
+            var folderCreator = new FolderCreator();
             foreach (var folder in directoryInfo.GetDirectories())
             {
-                listViewItems.Add(new ListViewItem(folder.Name, folder.LastWriteTime));
+                var listViewItemFolder = folderCreator.FactoryMathod();
+                listViewItemFolder.Name = folder.Name;
+                listViewItemFolder.LastWriteTime = folder.LastWriteTime;
+                listViewItems.Add(listViewItemFolder);
             }
             foreach (var file in directoryInfo.GetFiles())
             {
                 if (file.Exists)
-                    listViewItems.Add(new ListViewItem(file.Name, Path.GetExtension(file.Name), file.Length, file.LastWriteTime));
+                {
+                    var listViewItemFile = fileCreator.FactoryMathod();
+                    listViewItemFile.Name = file.Name;
+                    listViewItemFile.Type = Path.GetExtension(file.Name);
+                    listViewItemFile.Size = file.Length;
+                    listViewItemFile.LastWriteTime = file.LastWriteTime;
+                    listViewItems.Add(listViewItemFile);
+                }
             }
             return listViewItems;
         }
