@@ -16,10 +16,11 @@ namespace Shell
         private string _selectedDisc;
         private ListViewItem _currentListViewItem;
         private static List<string> _pathHistory;
+        private static List<string> _pathForwardHistory = new List<string>();
         public static ViewModel Model;
         private ICommand _commandBackward;
+        private ICommand _commandForward;
         public event PropertyChangedEventHandler PropertyChanged;
-
 
         public string CurrentPath
         {
@@ -87,14 +88,7 @@ namespace Shell
             }
         }
 
-        public ICommand CommandBackward
-        {
-            get
-            {
-                this._commandBackward = new Command(x => Backward());
-                return this._commandBackward;
-            }
-        }
+       
 
         public List<string> ComboBoxItems
         {
@@ -123,15 +117,40 @@ namespace Shell
             }
         }
 
+        public ICommand CommandBackward
+        {
+            get
+            {
+                this._commandBackward = new Command(x => Backward());
+                return this._commandBackward;
+            }
+        }
 
+        public ICommand CommandForward
+        {
+            get
+            {
+                this._commandForward = new Command(x => Forvard());
+                return this._commandForward;
+            }
+        }
         public void Backward()
         {
             if (_pathHistory.Count > 1)
             {
+                _pathForwardHistory.Add(_pathHistory.Last());
                 _pathHistory.RemoveAt(_pathHistory.Count - 1);
                 NotifyPropertyChanged("ListViewItems");
                 NotifyPropertyChanged("SelectedDiskIndex");
+            }
+        }
 
+        public void Forvard()
+        {
+            if (_pathForwardHistory.Count > 0)
+            {
+                CurrentPath = _pathForwardHistory.Last();
+                _pathForwardHistory.RemoveAt(_pathForwardHistory.Count - 1);
             }
         }
 

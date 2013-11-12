@@ -35,7 +35,7 @@
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Background="Beige">
             <Button Style="{StaticResource MenuButtons}" Content="Back" Command="{Binding CommandBackward}"/>
             <Separator Style="{StaticResource MenuSeparator}"/>
-            <Button Style="{StaticResource MenuButtons}"/>
+            <Button Style="{StaticResource MenuButtons}" Content="Forvard" Command="{Binding CommandForward}"/>
             <Separator Style="{StaticResource MenuSeparator}"/>
             <Button Style="{StaticResource MenuButtons}"/>
             <Separator Style="{StaticResource MenuSeparator}"/>
