@@ -43,7 +43,7 @@ namespace Shell
                 //TODO:переместить NotifyPropertyChanged и _pathBackwardHistory.Add(value)
                 _pathBackwardHistory.Add(value);
                 NotifyPropertyChanged("ListViewItems");
-                //NotifyPropertyChanged("SelectedDiskIndex");
+                NotifyPropertyChanged("SelectedDiskIndex");
                 NotifyPropertyChanged("CurrentPathForTexBox");
             }
         }
@@ -86,10 +86,10 @@ namespace Shell
             }
             set
             {
-                _selectedDisc = String.Format("{0}{1}", value, "\\");
+                _selectedDisc = String.Format("{0}{1}", value, "\\").Substring(0,3);
                 if(_pathBackwardHistory!=null && !_selectedDisc.Equals(_pathBackwardHistory.Last()))
                     CurrentPath=_selectedDisc;
-                //NotifyPropertyChanged("SelectedDiskIndex");
+                NotifyPropertyChanged("SelectedDiskIndex");
             }
         }
 
@@ -97,12 +97,12 @@ namespace Shell
         {
             get
             {
-                //if (_pathHistory != null)
-                //{
-                //    var currentDisk = _pathHistory.Last().Substring(0, 2);
-                //    var currentDiskIndex = ComboBoxItems.FindIndex(x => x == currentDisk);
-                //    return currentDiskIndex;
-                //}
+                if (_pathBackwardHistory != null)
+                {
+                    var currentDisk = _pathBackwardHistory.Last().Substring(0, 2);
+                    var currentDiskIndex = ComboBoxItems.FindIndex(x => x == currentDisk);
+                    return currentDiskIndex;
+                }
                 return 0;
             }
         }
@@ -146,7 +146,7 @@ namespace Shell
                 _pathForwardHistory.Add(CurrentPath);
                 _pathBackwardHistory.RemoveAt(_pathBackwardHistory.Count - 1);
                 NotifyPropertyChanged("ListViewItems");
-                //NotifyPropertyChanged("SelectedDiskIndex");
+                NotifyPropertyChanged("SelectedDiskIndex");
                 NotifyPropertyChanged("CurrentPathForTexBox");
             }
         }
@@ -158,7 +158,7 @@ namespace Shell
                 _pathBackwardHistory.Add(_pathForwardHistory.Last());
                 _pathForwardHistory.RemoveAt(_pathForwardHistory.Count - 1);
                 NotifyPropertyChanged("ListViewItems");
-              //  NotifyPropertyChanged("SelectedDiskIndex");
+                NotifyPropertyChanged("SelectedDiskIndex");
                 NotifyPropertyChanged("CurrentPathForTexBox");
             }
         }

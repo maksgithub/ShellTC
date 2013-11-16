@@ -12,7 +12,14 @@ namespace Shell.State
     {
         public void Open(string currentDirectory)
         {
-            ViewModel.Model.CurrentPath = string.Format("{0}\\{1}", ViewModel.Model.CurrentPath, currentDirectory);
+            if (ViewModel.Model.CurrentPath.Length == 3)
+            {
+                ViewModel.Model.CurrentPath = string.Format("{0}{1}", ViewModel.Model.CurrentPath, currentDirectory);
+            }
+            else
+            {
+                ViewModel.Model.CurrentPath = string.Format("{0}\\{1}", ViewModel.Model.CurrentPath, currentDirectory);
+            }
             ViewModel.ClearPathForwardHistory();
         }
     }
