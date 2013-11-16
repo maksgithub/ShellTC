@@ -11,12 +11,7 @@ namespace Shell
 {
     public abstract class ListViewItem
     {
-        private string _name;
-        private string _type;
-        private long _size;
         private ICommand _bindCommand;
-        private DateTime _lastWriteTime;
-        private IState _listViewItemState;
 
         public IState ListViewItemState { get; set; }
         public string Name { get; set; }
@@ -37,19 +32,5 @@ namespace Shell
         {
              ListViewItemState.Open(Name);
         }
-
-        //public ListViewItem(string name,string type, long size, DateTime lastWriteTime)
-        //{
-        //    _name=name;
-        //    _type = type;
-        //    _size = size;
-        //    _lastWriteTime = lastWriteTime;
-        //    _listViewItemState = new StateFile();
-        //}
-        //public ListViewItem(string name, DateTime lastWriteTime)
-        //    : this(name, "<Папка>", 0,lastWriteTime)
-        //{
-        //    _listViewItemState = new StateFolder();
-        //}
     }
 }

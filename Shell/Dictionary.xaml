@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">  
    
     <ControlTemplate x:Key="ComboBoxControlTamplate" TargetType="ComboBox">
-        <ComboBox ItemsSource="{Binding Path=ComboBoxItems}" Width="400" Height="25" Margin="2.5,2.5,2.5,2.5" 
-                  SelectedItem="{Binding Path=SelectedDisc}" SelectedIndex="{Binding Path = SelectedDiskIndex,Mode=OneWay}"/>
+        <ComboBox ItemsSource="{Binding Path=ComboBoxItems}" Width="37" Height="25" Margin="2.5,2.5,2.5,2.5" 
+                  SelectedItem="{Binding Path=SelectedDisc}" SelectedIndex="{Binding Path = SelectedDiskIndex, Mode=OneWay}"/>
     </ControlTemplate>
     
     <Style TargetType="ListView" x:Key="ListViewStyle">
@@ -25,10 +25,10 @@
         <ListView ItemsSource="{Binding Path=ListViewItems}" SelectedItem="{Binding CurrentListViewItem}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Имя" Width="130" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Тип" Width="50" DisplayMemberBinding="{Binding Type}"/>
-                    <GridViewColumn Header="Размер" Width="90" DisplayMemberBinding="{Binding Size}"/>
-                    <GridViewColumn Header="Дата изменения" Width="90" DisplayMemberBinding="{Binding LastWriteTime}"/>
+                    <GridViewColumn Header="Имя" Width="230" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Тип" Width="60" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Размер" Width="80" DisplayMemberBinding="{Binding Size}"/>
+                    <GridViewColumn Header="Дата изменения" Width="120" DisplayMemberBinding="{Binding LastWriteTime}"/>
                 </GridView>
             </ListView.View>
             <ListView.ItemContainerStyle>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="42fe8367-5cd1-4b5f-b45e-813f4a7f63b7" name="FactoryMethod" linkedPackageId="474b1024-3e45-472f-a745-ea182192b0de" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="103afab3-c7d2-4048-b834-d663a0ced8ce">
+      <profileInstance Id="68470677-01f8-4bee-9c99-ceee8eaea9b5" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="9dee581e-6adb-4bd0-add8-31967ea3000b">
+      <profileInstance Id="85f891ec-215f-400c-9fb2-01e02d0f0970" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="bc5fe67b-b8b4-46d6-84d7-dcb5252a8793" name="ListViewItem" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="52acc774-9159-4caf-aa0c-a0b20b407733" />
+        <ownedAttributesInternal>
+          <property Id="da617101-97d8-4d61-b365-843c67e13ee5" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f61862f3-05ff-461b-a082-3a034fa5121a" />
+          </property>
+          <property Id="de26562b-72e0-484e-b960-f8621e580c34" name="Size" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="75c74462-843d-4e70-a798-bb506ff6aebf" />
+          </property>
+          <property Id="fe0df0c5-25d6-43fd-b73c-cbb708894219" name="Date" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3df7c5f2-d2d1-4717-9b89-1fd8c5109988" />
+          </property>
+          <property Id="98dfa532-2c2d-4ab8-b58b-53fb57d6537d" name="Type" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5bf8e1db-7d7a-4043-ac59-e0f9b5f10650" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5126eca4-6fc5-4385-9729-3c34768e8eae" name="File" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c1d284dd-07eb-42b7-b0fb-28dd3ada69a5" />
+        <generalsInternal>
+          <generalization Id="28bb3e6f-813f-48cb-a182-b49df59cdd85" isSubstitutable="false">
+            <classMoniker Id="bc5fe67b-b8b4-46d6-84d7-dcb5252a8793" LastKnownName="ListViewItem" />
+            <elementDefinition Id="4e8adc5e-0483-4d2c-949e-4bab9f556d85" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="88901ce4-3a6f-40c5-a2fe-46ebfc25cec5" name="File" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="afb582d0-8c2e-4b14-9ce1-48d11ed53ddd" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="72669f7b-944a-4100-aa4b-daff5b2f6eb3" name="Folder" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e776e5b6-9d8d-4e31-835e-d773d6eccbc1" />
+        <generalsInternal>
+          <generalization Id="bcadbf53-619e-494c-93c6-0c486d4a8ea8" isSubstitutable="false">
+            <classMoniker Id="bc5fe67b-b8b4-46d6-84d7-dcb5252a8793" LastKnownName="ListViewItem" />
+            <elementDefinition Id="1ddf7f5b-05a0-44e4-9e1f-093a928cba8c" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="8d37e218-84d8-4fc2-b294-99ae9ff48095" name="Folder" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="27c5e9ba-c4e8-4530-8acd-ad566002e278" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0d9778ab-6394-43c3-8f30-b8528f328bf7" name="Creator" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ba692d23-920d-4c12-adfa-2a972e958eb0" />
+        <ownedOperationsInternal>
+          <operation Id="fc9d1422-b614-4025-99a0-e73dbbd77a15" name="FactoryMethod" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fb6ba696-8003-4fdd-b1b5-0c0fdd32ee6e" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="97dbceab-1353-4382-8e86-b7f9e2f4ce51" name="FolderCreator" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9462af73-5f22-44d9-ba3c-9b9a707de6b8" />
+        <suppliersInternal>
+          <dependency Id="6757dee5-db6b-46a5-8af0-2967a6925a8c">
+            <classMoniker Id="72669f7b-944a-4100-aa4b-daff5b2f6eb3" LastKnownName="Folder" />
+            <elementDefinition Id="dbc97082-d8f4-449d-b315-cdf0813a61ba" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="b52aa4fd-2736-49e5-89e5-1b60621eb81b" isSubstitutable="false">
+            <classMoniker Id="0d9778ab-6394-43c3-8f30-b8528f328bf7" LastKnownName="Creator" />
+            <elementDefinition Id="4f77f260-cf05-458e-a004-c1dd4b97c92e" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="f187d947-f17b-4732-a258-d95f1b3c1278" name="FactoryMethod" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="aa1f4fb3-b9fd-4aad-bfea-a8beb816679a" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="37a5421f-df09-4dd8-b665-06a69a156dd1" name="FileCreator" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="583a4e47-6c9d-44b1-abd7-ad208ada2c79" />
+        <suppliersInternal>
+          <dependency Id="8efcca64-5caf-4e51-a64b-2fb096fe9784">
+            <classMoniker Id="5126eca4-6fc5-4385-9729-3c34768e8eae" LastKnownName="File" />
+            <elementDefinition Id="86b8d1a8-9b04-44f9-9339-f503afaaa3ee" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="012f3662-53c7-46ba-82fa-ca2528663aa5" isSubstitutable="false">
+            <classMoniker Id="0d9778ab-6394-43c3-8f30-b8528f328bf7" LastKnownName="Creator" />
+            <elementDefinition Id="545e07b8-c34b-4b69-85de-154eeb0fc03c" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="e3fcf7cf-3114-4ff5-8d24-caf59d1dced2" name="FactoryMethod" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7b120454-329b-41ed-83f5-282d7cee0ee1" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8332a558-4015-4357-aa95-a3a1d8dfab11" name="ViewModel" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="204a89ea-1392-485b-9723-b3824592d2ba" />
+        <suppliersInternal>
+          <dependency Id="db07cb0d-edcd-4376-805a-40660efd0d1c">
+            <classMoniker Id="97dbceab-1353-4382-8e86-b7f9e2f4ce51" LastKnownName="FolderCreator" />
+            <elementDefinition Id="96490283-588e-425f-9c30-8d6641786965" />
+          </dependency>
+          <dependency Id="31971672-9e5e-4d4c-bd6c-2991df5a9f67">
+            <classMoniker Id="37a5421f-df09-4dd8-b665-06a69a156dd1" LastKnownName="FileCreator" />
+            <elementDefinition Id="b16c1b00-1ae5-4a83-86cf-e8b1cfc7e864" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="474b1024-3e45-472f-a745-ea182192b0de" name="FactoryMethod">
+    <elementDefinition Id="2e5c06fb-73a2-4608-8406-a2290e68ea46" />
+  </package>
+</logicalClassDesignerModel>

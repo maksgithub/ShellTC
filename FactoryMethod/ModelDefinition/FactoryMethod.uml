@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="2e5c06fb-73a2-4608-8406-a2290e68ea46"
+  name="FactoryMethod" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="52acc774-9159-4caf-aa0c-a0b20b407733"
+        name="ListViewItem"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="f61862f3-05ff-461b-a082-3a034fa5121a"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="75c74462-843d-4e70-a798-bb506ff6aebf"
+            name="Size"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="3df7c5f2-d2d1-4717-9b89-1fd8c5109988"
+            name="Date"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="5bf8e1db-7d7a-4043-ac59-e0f9b5f10650"
+            name="Type"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c1d284dd-07eb-42b7-b0fb-28dd3ada69a5"
+        name="File"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="4e8adc5e-0483-4d2c-949e-4bab9f556d85"
+            isSubstitutable="false">
+            <classMoniker
+              Id="52acc774-9159-4caf-aa0c-a0b20b407733"
+              LastKnownName="ListViewItem"
+              LastKnownLocation="FactoryMethod.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="afb582d0-8c2e-4b14-9ce1-48d11ed53ddd"
+            name="File"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e776e5b6-9d8d-4e31-835e-d773d6eccbc1"
+        name="Folder"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="1ddf7f5b-05a0-44e4-9e1f-093a928cba8c"
+            isSubstitutable="false">
+            <classMoniker
+              Id="52acc774-9159-4caf-aa0c-a0b20b407733"
+              LastKnownName="ListViewItem"
+              LastKnownLocation="FactoryMethod.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="27c5e9ba-c4e8-4530-8acd-ad566002e278"
+            name="Folder"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ba692d23-920d-4c12-adfa-2a972e958eb0"
+        name="Creator"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="fb6ba696-8003-4fdd-b1b5-0c0fdd32ee6e"
+            name="FactoryMethod"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9462af73-5f22-44d9-ba3c-9b9a707de6b8"
+        name="FolderCreator"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="dbc97082-d8f4-449d-b315-cdf0813a61ba">
+            <classMoniker
+              Id="e776e5b6-9d8d-4e31-835e-d773d6eccbc1"
+              LastKnownName="Folder"
+              LastKnownLocation="FactoryMethod.uml" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="4f77f260-cf05-458e-a004-c1dd4b97c92e"
+            isSubstitutable="false">
+            <classMoniker
+              Id="ba692d23-920d-4c12-adfa-2a972e958eb0"
+              LastKnownName="Creator"
+              LastKnownLocation="FactoryMethod.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="aa1f4fb3-b9fd-4aad-bfea-a8beb816679a"
+            name="FactoryMethod"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="583a4e47-6c9d-44b1-abd7-ad208ada2c79"
+        name="FileCreator"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="86b8d1a8-9b04-44f9-9339-f503afaaa3ee">
+            <classMoniker
+              Id="c1d284dd-07eb-42b7-b0fb-28dd3ada69a5"
+              LastKnownName="File"
+              LastKnownLocation="FactoryMethod.uml" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization
+            Id="545e07b8-c34b-4b69-85de-154eeb0fc03c"
+            isSubstitutable="false">
+            <classMoniker
+              Id="ba692d23-920d-4c12-adfa-2a972e958eb0"
+              LastKnownName="Creator"
+              LastKnownLocation="FactoryMethod.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7b120454-329b-41ed-83f5-282d7cee0ee1"
+            name="FactoryMethod"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="204a89ea-1392-485b-9723-b3824592d2ba"
+        name="ViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="96490283-588e-425f-9c30-8d6641786965">
+            <classMoniker
+              Id="9462af73-5f22-44d9-ba3c-9b9a707de6b8"
+              LastKnownName="FolderCreator"
+              LastKnownLocation="FactoryMethod.uml" />
+          </dependency>
+          <dependency
+            Id="b16c1b00-1ae5-4a83-86cf-e8b1cfc7e864">
+            <classMoniker
+              Id="583a4e47-6c9d-44b1-abd7-ad208ada2c79"
+              LastKnownName="FileCreator"
+              LastKnownLocation="FactoryMethod.uml" />
+          </dependency>
+        </suppliersInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

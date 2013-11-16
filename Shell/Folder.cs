@@ -11,6 +11,7 @@ namespace Shell
         public Folder()
         {
             ListViewItemState = new Shell.State.StateFolder();
+            Type = "<Папка>";
         }
     }
 }
