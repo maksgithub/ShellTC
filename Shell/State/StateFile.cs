@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Shell;
+using System.Diagnostics;
 
 namespace Shell.State
 {
@@ -12,7 +13,7 @@ namespace Shell.State
     {
         public void Open(string currentFile)
         {
-            MessageBox.Show("File Double Click");
+            Process.Start("rundll32.exe", "shell32.dll, OpenAs_RunDLL " + ViewModel.Model.CurrentPath + @"\" + currentFile);
         }
     }
 }

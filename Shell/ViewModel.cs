@@ -40,7 +40,6 @@ namespace Shell
                 {
                     _pathBackwardHistory = new List<string>();
                 }
-                //TODO:переместить NotifyPropertyChanged и _pathBackwardHistory.Add(value)
                 _pathBackwardHistory.Add(value);
                 NotifyPropertyChanged("ListViewItems");
                 NotifyPropertyChanged("SelectedDiskIndex");
@@ -134,7 +133,7 @@ namespace Shell
         {
             get
             {
-                this._commandForward = new Command(x => Forvard());
+                this._commandForward = new Command(x => Forward());
                 return this._commandForward;
             }
         }
@@ -143,6 +142,7 @@ namespace Shell
         {
             if (_pathBackwardHistory.Count > 1)
             {
+                //TODO:переместить NotifyPropertyChanged и _pathBackwardHistory.Add(value)
                 _pathForwardHistory.Add(CurrentPath);
                 _pathBackwardHistory.RemoveAt(_pathBackwardHistory.Count - 1);
                 NotifyPropertyChanged("ListViewItems");
@@ -151,10 +151,11 @@ namespace Shell
             }
         }
 
-        public void Forvard()
+        public void Forward()
         {
             if (_pathForwardHistory.Count > 0)
             {
+                //TODO:переместить NotifyPropertyChanged и _pathBackwardHistory.Add(value)
                 _pathBackwardHistory.Add(_pathForwardHistory.Last());
                 _pathForwardHistory.RemoveAt(_pathForwardHistory.Count - 1);
                 NotifyPropertyChanged("ListViewItems");
@@ -171,10 +172,13 @@ namespace Shell
             var folderCreator = new FolderCreator();
             foreach (var folder in directoryInfo.GetDirectories())
             {
-                var listViewItemFolder = folderCreator.FactoryMathod();
-                listViewItemFolder.Name = folder.Name;
-                listViewItemFolder.LastWriteTime = folder.LastWriteTime;
-                listViewItems.Add(listViewItemFolder);
+                if (folder.Exists)
+                {
+                    var listViewItemFolder = folderCreator.FactoryMathod();
+                    listViewItemFolder.Name = folder.Name;
+                    listViewItemFolder.LastWriteTime = folder.LastWriteTime;
+                    listViewItems.Add(listViewItemFolder);
+                }
             }
             foreach (var file in directoryInfo.GetFiles())
             {
