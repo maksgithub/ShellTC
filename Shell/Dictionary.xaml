@@ -22,7 +22,7 @@
     </Style>
     
     <ControlTemplate x:Key="ListViewControlTamplate" TargetType="ListView">
-        <ListView ItemsSource="{Binding Path=ListViewItems}" SelectedItem="{Binding CurrentListViewItem}">
+        <ListView  SelectedItem="{Binding CurrentListViewItem}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" Width="230" DisplayMemberBinding="{Binding Name}"/>
@@ -56,7 +56,7 @@
             </ListView.ItemContainerStyle>
         </ListView>
     </ControlTemplate>
-    
+
     <Style TargetType="Button" x:Key="MenuButtons">
         <Setter Property="Background" Value="Beige"/>
         <Setter Property="BorderBrush" Value="Beige"/>

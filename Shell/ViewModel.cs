@@ -23,7 +23,7 @@ namespace Shell
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public string CurrentPath
+        public string LeftCurrentPath
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Shell
         {
             get
             {
-                return OpenFolder(CurrentPath);
+                return OpenFolder(LeftCurrentPath);
             }
         }
 
@@ -59,7 +59,7 @@ namespace Shell
         {
             get
             {
-                return CurrentPath;
+                return LeftCurrentPath;
             }
         }
 
@@ -87,7 +87,7 @@ namespace Shell
             {
                 _selectedDisc = String.Format("{0}{1}", value, "\\").Substring(0,3);
                 if(_pathBackwardHistory!=null && !_selectedDisc.Equals(_pathBackwardHistory.Last()))
-                    CurrentPath=_selectedDisc;
+                    LeftCurrentPath = _selectedDisc;
                 NotifyPropertyChanged("SelectedDiskIndex");
             }
         }
@@ -143,7 +143,7 @@ namespace Shell
             if (_pathBackwardHistory.Count > 1)
             {
                 //TODO:переместить NotifyPropertyChanged и _pathBackwardHistory.Add(value)
-                _pathForwardHistory.Add(CurrentPath);
+                _pathForwardHistory.Add(LeftCurrentPath);
                 _pathBackwardHistory.RemoveAt(_pathBackwardHistory.Count - 1);
                 NotifyPropertyChanged("ListViewItems");
                 NotifyPropertyChanged("SelectedDiskIndex");

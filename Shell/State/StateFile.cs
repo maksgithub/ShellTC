@@ -13,7 +13,7 @@ namespace Shell.State
     {
         public void Open(string currentFile)
         {
-            Process.Start("rundll32.exe", "shell32.dll, OpenAs_RunDLL " + ViewModel.Model.CurrentPath + @"\" + currentFile);
+            Process.Start("rundll32.exe", "shell32.dll, OpenAs_RunDLL " + ViewModel.Model.LeftCurrentPath + @"\" + currentFile);
         }
     }
 }
