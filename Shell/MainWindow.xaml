@@ -33,7 +33,7 @@
         </StackPanel>
         <Separator Grid.Row="1" Grid.ColumnSpan="3" Width="auto"/>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Background="Beige">
-            <Button Style="{StaticResource MenuButtons}" Command="{Binding CommandBackward}" Margin="2.5,2" Width="30">
+            <Button Style="{StaticResource MenuButtons}" Command="{Binding CommandBackward}" CommandTarget="{Binding ElementName=LeftListView}" Margin="2.5,2" Width="30">
                 <Path Fill="Beige" Stroke="Red" Data="M 0 14.5 L 9 6.5 L 7 12.5 L 19 12.5 L 19 16.5 L 7 16.5 L 9 22 Z" Height="17.668" Stretch="Fill" Width="26.418" RenderTransformOrigin="1.789,0.495"/>
             </Button>
             <Separator Style="{StaticResource MenuSeparator}"/>
@@ -68,10 +68,47 @@
                 <ColumnDefinition Width="83*"/>
                 <ColumnDefinition Width="273*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.ColumnSpan="2" />
+            <TextBox Grid.ColumnSpan="2" Text="{Binding RightCurrentPathForTexBox,Mode= OneWay}"/>
         </Grid>
 
-        <ListView x:Name="LeftListViewItem" Grid.Column="0" Grid.Row="5" ItemsSource="{Binding Path=ListViewItems}">
+        <ListView x:Name="LeftListView" Grid.Column="0" Grid.Row="5" ItemsSource="{Binding Path=LeftListViewItems}" SelectedItem="{Binding CurrentListViewItem}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя" Width="230" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Тип" Width="60" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Размер" Width="80" DisplayMemberBinding="{Binding Size}"/>
+                    <GridViewColumn Header="Дата изменения" Width="120" DisplayMemberBinding="{Binding LastWriteTime}"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Foreground" Value="Red" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="Blue" />
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Border Background="Transparent">
+                                    <Border.InputBindings>
+                                        <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding Command}" />
+                                    </Border.InputBindings>
+                                    <GridViewRowPresenter />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+
+        <ListView x:Name="RightListView" Grid.Column="2" Grid.Row="5" ItemsSource="{Binding Path=RightListViewItems}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Имя" Width="230" DisplayMemberBinding="{Binding Name}"/>
@@ -104,7 +141,6 @@
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
-        <ListView x:Name="RightListView" Grid.Column="2" Grid.Row="5" Template="{StaticResource ListViewControlTamplate}"/>
         <GridSplitter Grid.Column ="1" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="5" Background="Beige"/>
         <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" Content="Выделено: 0 Кб, файлов: 0 из 0, папок: 0 из 0 " VerticalAlignment="Center"/>
         <Separator  Grid.Row="7" Grid.ColumnSpan="3" Width="auto"/>
@@ -134,7 +170,7 @@
             <Separator   Grid.Column="7" Style="{StaticResource MenuSeparator}"/>
             <Button Content="F7 Каталог" Grid.Column="8" Style="{StaticResource BottomMenuButtons}"/>
             <Separator  Grid.Column="9" Style="{StaticResource MenuSeparator}"/>
-            <Button Content="F8 Удаление" Grid.Column="10" Style="{StaticResource BottomMenuButtons}"/>
+            <Button Content="F8 Удаление" Grid.Column="10" Style="{StaticResource BottomMenuButtons}" Command="{Binding DleleteCommand}"/>
             <Separator  Grid.Column="11" Style="{StaticResource MenuSeparator}"/>
             <Button Content="Alt+F4 Выход" Grid.Column="12" Style="{StaticResource BottomMenuButtons}"/>
         </Grid>

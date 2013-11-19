@@ -32,5 +32,20 @@ namespace Shell
         {
              ListViewItemState.Open(Name);
         }
+
+        public abstract void Delete(string fullPath);
+        public abstract bool RemoveAccess(string fullPath);
+
+        public void DeleteListViewItem(string fullPath)
+        {
+            if (RemoveAccess(fullPath))
+            {
+                Delete(fullPath);
+            }
+            else
+            {
+                MessageBox.Show("You can not delete");
+            }
+        }
     }
 }

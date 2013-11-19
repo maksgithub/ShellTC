@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace Shell.State
 {
-    public class StateFolder:ListViewItem, IState
+    public class StateFolder: IState
     {
         public void Open(string currentDirectory)
         {

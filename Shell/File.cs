@@ -12,5 +12,17 @@ namespace Shell
         {
             ListViewItemState = new Shell.State.StateFile();
         }
+
+        public override void Delete(string path)
+        {
+            System.IO.File.Delete(path);
+        }
+
+        public override bool RemoveAccess(string fullPath)
+        {
+            if(System.IO.File.Exists(fullPath))
+                return true;
+            return false;
+        }
     }
 }

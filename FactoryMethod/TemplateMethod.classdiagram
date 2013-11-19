@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="5c8f5e02-8176-4673-be61-d15dd2a6589d" name="TemplateMethod" linkedPackageId="b18d9f98-1937-4b38-9552-dbb6a602eebc" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="15363af8-72f2-4142-a6a4-7abab16d8f9f">
+      <profileInstance Id="9a01de91-4473-47cd-9030-c5bb51b5ab02" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="49af5ff5-d4c0-42e6-89da-f095dcde690e">
+      <profileInstance Id="a076e069-e450-4bb9-a7b2-51eddfc16934" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2c2e00a5-fb29-480c-8a1e-46eb0a024a3e" name="ListViewItem" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0bad6e9d-1289-48ab-884e-a2091e13c1dd" />
+        <ownedAttributesInternal>
+          <property Id="1f054ab0-4b39-4c59-a0a0-826b7521ff66" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="eb751cda-4980-42d1-bfe7-4561108c96b3" />
+          </property>
+          <property Id="379c35cb-da0d-4818-8369-3b281f0f2ca9" name="Type" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="63906685-d734-47c7-89aa-6e2744a0bbf6" />
+          </property>
+          <property Id="81db97d2-052d-484a-9745-5f144aef9156" name="Size" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="12eef77a-70cc-4319-b430-b44320625f0c" />
+          </property>
+          <property Id="c54b7085-e203-4eb6-9822-a1078bdb24b1" name="LastWriteTime" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="72e9ac6f-c0af-4979-9e7d-d98f8320080d" />
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="eee2d6e1-8d82-4606-9c7b-4998019fc668" name="abstract void Delete" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2e7a2861-85e0-44b6-a011-adf7e3c2aa00" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="40becf03-8c3f-4f7e-ac97-6748c6e4618c" name="string fullPath" direction="In" isUnique="false">
+                  <elementDefinition Id="55a20f39-b266-4915-92e1-c776a123df84" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="242e5793-c23c-48fb-b6bd-ab7c7677006c" name="void Delete ListViewItem" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a26389c6-33b7-4233-add0-8212c488558e" />
+          </operation>
+          <operation Id="4a94ebe3-6840-4446-8152-0281b43b9349" name="abstract bool RemoveAccess" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="17363997-3a07-4e8b-8c00-9a16d466a7d3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="888d120b-4425-449f-8e7e-c9f8c8dbc47e" name="string fullPath" direction="In" isUnique="false">
+                  <elementDefinition Id="48145615-a172-482f-ad29-0ce367f22b2d" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7069363f-150c-4224-93cf-d26eea9ee386" name="Folder" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8b4677fc-ad5f-4847-b570-db7dd2cf7ca8" />
+        <generalsInternal>
+          <generalization Id="c5be8ccf-2989-4916-a129-9edeaa2df815" isSubstitutable="false">
+            <classMoniker Id="2c2e00a5-fb29-480c-8a1e-46eb0a024a3e" LastKnownName="ListViewItem" />
+            <elementDefinition Id="6cbec8b9-19f8-43b9-ba7a-d35676471d53" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="0d552bdc-a1d5-47bf-aa41-b24060293dcd" name="Delete" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f54c77f0-d5f2-4ccc-8940-7177d368a59d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="28a20c08-2c3b-46f1-89db-39855a2189f7" name="string fullPath" direction="In" isUnique="false">
+                  <elementDefinition Id="b8a56659-cd1f-4aad-8198-b477fa21fc0f" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="fe2a4e20-b8d8-43e9-8db6-c6f1ee4672f6" name="RemoveAcces" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ee295ea2-542d-4071-acf0-660b4327ca5c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1fa4deeb-d430-4a1c-9ef8-86b8e61797a2" name="string fullPath" direction="In" isUnique="false">
+                  <elementDefinition Id="af7cb42c-4aa4-46f9-ab86-636e5ef3c43d" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="71cb8d91-1643-43e8-95c8-11a9f428408c" name="File" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c7e44a83-0155-4222-88b4-c677679cd1f1" />
+        <generalsInternal>
+          <generalization Id="00f944b1-9c77-4d2a-9ad4-7e2f06e2cec8" isSubstitutable="false">
+            <classMoniker Id="2c2e00a5-fb29-480c-8a1e-46eb0a024a3e" LastKnownName="ListViewItem" />
+            <elementDefinition Id="c3d45fbc-7dd4-429e-8f41-56e761452883" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="a3809706-c097-4d5b-8822-ace6758feca7" name="Delete" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d95b418c-3ca5-422c-a4a3-6d7b0256bbe1" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="fc4a4daa-b89a-4f16-9f0b-7c9d9f177ae4" name="string fullPath" direction="In" isUnique="false">
+                  <elementDefinition Id="146a5cfb-3d79-422a-9061-75c42208d2b7" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="26ad3cd9-4425-447b-b3b2-2680cc16371d" name="RemoveAcces" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e71d9d60-3ad2-46de-9403-6d7011d08152" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="757ceea6-1d79-4a63-abd8-01c8d59a318d" name="string fullPath" direction="In" isUnique="false">
+                  <elementDefinition Id="f0c4df88-aca6-42af-b060-8e498de9d6bc" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="b18d9f98-1937-4b38-9552-dbb6a602eebc" name="FactoryMethod">
+    <elementDefinition Id="2e5c06fb-73a2-4608-8406-a2290e68ea46" />
+  </package>
+</logicalClassDesignerModel>
