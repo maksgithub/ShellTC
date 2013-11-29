@@ -32,7 +32,7 @@
             </StackPanel>
         </StackPanel>
         <Separator Grid.Row="1" Grid.ColumnSpan="3" Width="auto"/>
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Background="Beige">
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" Background="Beige">
             <Button Style="{StaticResource MenuButtons}" Command="{Binding CommandBackward}" CommandTarget="{Binding ElementName=LeftListView}" Margin="2.5,2" Width="30">
                 <Path Fill="Beige" Stroke="Red" Data="M 0 14.5 L 9 6.5 L 7 12.5 L 19 12.5 L 19 16.5 L 7 16.5 L 9 22 Z" Height="17.668" Stretch="Fill" Width="26.418" RenderTransformOrigin="1.789,0.495"/>
             </Button>
@@ -56,7 +56,32 @@
             <Button Style="{StaticResource MenuButtons}" />
             <Separator Style="{StaticResource MenuSeparator}"/>
             <ComboBox Template="{StaticResource ComboBoxControlTamplate}" Height="30" VerticalAlignment="Bottom">
-                
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="1" Orientation="Horizontal" Background="Beige">
+            <Button Style="{StaticResource MenuButtons}" Command="{Binding CommandBackward}" CommandTarget="{Binding ElementName=LeftListView}" Margin="2.5,2" Width="30">
+                <Path Fill="Beige" Stroke="Red" Data="M 0 14.5 L 9 6.5 L 7 12.5 L 19 12.5 L 19 16.5 L 7 16.5 L 9 22 Z" Height="17.668" Stretch="Fill" Width="26.418" RenderTransformOrigin="1.789,0.495"/>
+            </Button>
+            <Separator Style="{StaticResource MenuSeparator}"/>
+            <Button Style="{StaticResource MenuButtons}" Command="{Binding CommandForward}" Width="30" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Path Fill="Beige" Stroke="Red" Data="M 0 14.5 L 9 6.5 L 7 12.5 L 19 12.5 L 19 16.5 L 7 16.5 L 9 22 Z" Height="17.668" Stretch="Fill" Width="26.418" RenderTransformOrigin="1.789,0.495" Margin="0,0,0,1.5"/>
+            </Button>
+            <Separator Style="{StaticResource MenuSeparator}"/>
+            <Button Style="{StaticResource MenuButtons}"/>
+            <Separator Style="{StaticResource MenuSeparator}"/>
+            <Button Style="{StaticResource MenuButtons}"/>
+            <Separator Style="{StaticResource MenuSeparator}"/>
+            <Button Style="{StaticResource MenuButtons}" />
+            <Separator Style="{StaticResource MenuSeparator}"/>
+            <ComboBox Template="{StaticResource ComboBoxControlTamplate}" Height="30" VerticalAlignment="Bottom">
             </ComboBox>
         </StackPanel>
         <Separator Grid.Row="3" Grid.ColumnSpan="3" Width="auto"/>

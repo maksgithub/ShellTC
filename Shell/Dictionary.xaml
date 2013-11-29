@@ -69,8 +69,8 @@
         <Setter Property="Background" Value="Beige"/>
         <Setter Property="BorderBrush" Value="Red"/>
         <Setter Property="Height" Value="25"/>
-
     </Style>
+    
     <Style TargetType="Separator" x:Key="MenuSeparator">
         <Setter Property="Height" Value="5"/>
         <Setter Property="Width" Value="30"/>

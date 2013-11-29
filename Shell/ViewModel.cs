@@ -25,6 +25,7 @@ namespace Shell
         private ICommand _deleteCommand;
         public event PropertyChangedEventHandler PropertyChanged;
 
+
         public string RightCurrentPath
         {
             get
