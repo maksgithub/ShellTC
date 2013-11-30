@@ -10,17 +10,9 @@ namespace Shell.State
 {
     public class StateFolder: IState
     {
-        public void Open(string currentDirectory)
+        public void Open(string currentPath)
         {
-            if (ViewModel.Model.LeftCurrentPath.Length == 3)
-            {
-                ViewModel.Model.LeftCurrentPath = string.Format("{0}{1}", ViewModel.Model.LeftCurrentPath, currentDirectory);
-            }
-            else
-            {
-                ViewModel.Model.LeftCurrentPath = string.Format("{0}\\{1}", ViewModel.Model.LeftCurrentPath, currentDirectory);
-            }
-            ViewModel.ClearPathForwardHistory();
+            ViewModel.Model.LeftCurrentPath = currentPath;
         }
     }
 }

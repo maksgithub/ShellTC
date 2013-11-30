@@ -13,144 +13,27 @@ namespace Shell
 {
     public class ViewModel : INotifyPropertyChanged
     {
-        private string _selectedDisc;
-        private ListViewItem _currentListViewItem;
+        private string _leftSelectedDisc;
+        private string _rightSelectedDisc;
+        private ListViewItem _leftCurrentListViewItem;
+        private ListViewItem _rightCurrentListViewItem;
         private static List<string> _leftPathBackwardHistory;
         private static List<string> _leftPathForwardHistory = new List<string>();
         private static List<string> _rightPathBackwardHistory;
         private static List<string> _rightPathForwardHistory = new List<string>();
         public static ViewModel Model;
-        private ICommand _commandBackward;
-        private ICommand _commandForward;
-        private ICommand _deleteCommand;
+        private ICommand _leftCommandBackward;
+        private ICommand _leftDeleteCommand;
+        private ICommand _leftCommandForward;
+        private ICommand _rightCommandBackward;
+        private ICommand _rightCommandForward;
+        private ICommand _rightDeleteCommand;
+        private byte _selectedList;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        #region LeftListViewItem
 
-        public string RightCurrentPath
-        {
-            get
-            {
-                if (_rightPathBackwardHistory == null || _rightPathBackwardHistory.Count == 0)
-                {
-                    _rightPathBackwardHistory = new List<string>();
-                    _rightPathBackwardHistory.Add(ComboBoxItems.First() + "\\");
-                }
-                return _rightPathBackwardHistory.Last();
-            }
-            set
-            {
-                if (_rightPathBackwardHistory == null)
-                {
-                    _rightPathBackwardHistory = new List<string>();
-                }
-                _leftPathBackwardHistory.Add(value);
-                NotifyPropertyChanged("RightListViewItems");
-                NotifyPropertyChanged("SelectedDiskIndex");
-                NotifyPropertyChanged("CurrentPathForTexBox");
-            }
-        }
-
-        public string LeftCurrentPath
-        {
-            get
-            {
-                if (_leftPathBackwardHistory == null || _leftPathBackwardHistory.Count == 0)
-                {
-                    _leftPathBackwardHistory = new List<string>();
-                    _leftPathBackwardHistory.Add(ComboBoxItems.First() + "\\");
-                }
-                return _leftPathBackwardHistory.Last();
-            }
-            set
-            {
-                if (_leftPathBackwardHistory == null)
-                {
-                    _leftPathBackwardHistory = new List<string>();
-                }
-                _leftPathBackwardHistory.Add(value);
-                NotifyPropertyChanged("LeftListViewItems");
-                NotifyPropertyChanged("SelectedDiskIndex");
-                NotifyPropertyChanged("CurrentPathForTexBox");
-            }
-        }
-
-        public List<ListViewItem> LeftListViewItems
-        {
-            get
-            {
-                return OpenFolder(LeftCurrentPath);
-            }
-        }
-
-        public List<ListViewItem> RightListViewItems
-        {
-            get
-            {
-                return OpenFolder(RightCurrentPath);
-            }
-        }
-
-        public string RightCurrentPathForTexBox
-        {
-            get
-            {
-                return LeftCurrentPath;
-            }
-        }
-
-        public string CurrentPathForTexBox
-        {
-            get
-            {
-                return LeftCurrentPath;
-            }
-        }
-
-
-        public ListViewItem CurrentListViewItem
-        {
-            get
-            {
-                return _currentListViewItem;
-            }
-            set
-            {
-                _currentListViewItem = value;
-            }
-        }
-
-     
-        public string  SelectedDisc
-        {
-            get
-            {
-                return _selectedDisc;
-            }
-            set
-            {
-                _selectedDisc = String.Format("{0}{1}", value, "\\").Substring(0,3);
-                if (_leftPathBackwardHistory != null && !_selectedDisc.Equals(_leftPathBackwardHistory.Last()))
-                    LeftCurrentPath = _selectedDisc;
-                NotifyPropertyChanged("SelectedDiskIndex");
-            }
-        }
-
-        public int SelectedDiskIndex
-        {
-            get
-            {
-                if (_leftPathBackwardHistory != null)
-                {
-                    var currentDisk = _leftPathBackwardHistory.Last().Substring(0, 2);
-                    var currentDiskIndex = ComboBoxItems.FindIndex(x => x == currentDisk);
-                    return currentDiskIndex;
-                }
-                return 0;
-            }
-        }
-
-
-        public List<string> ComboBoxItems
+            public List<string> LeftComboBoxItems
         {
             get
             {
@@ -163,41 +46,117 @@ namespace Shell
             }
         }
 
-        public ICommand CommandBackward
+            public string LeftCurrentPathForTexBox
         {
             get
             {
-                this._commandBackward = new Command(x => Backward());
-                return this._commandBackward;
+                return LeftCurrentPath;
             }
         }
 
-        public ICommand CommandForward
+            public string LeftSelectedDisc
         {
             get
             {
-                this._commandForward = new Command(x => Forward());
-                return this._commandForward;
+                return _leftSelectedDisc;
+            }
+            set
+            {
+                _leftSelectedDisc = String.Format("{0}{1}", value, "\\").Substring(0, 3);
+                if (_leftPathBackwardHistory != null && !_leftSelectedDisc.Equals(_leftPathBackwardHistory.Last()))
+                    LeftCurrentPath = _leftSelectedDisc;
+                //NotifyPropertyChanged("LeftSelectedDiskIndex");
             }
         }
 
-        public ICommand DleleteCommand
+            public string LeftCurrentPath
         {
             get
             {
-                this._deleteCommand = new Command(x => Delete());
-                return this._deleteCommand;
+                if (_leftPathBackwardHistory == null || _leftPathBackwardHistory.Count == 0)
+                {
+                    _leftPathBackwardHistory = new List<string>();
+                    _leftPathBackwardHistory.Add(LeftComboBoxItems.First() + "\\");
+                }
+                return _leftPathBackwardHistory.Last();
+            }
+            set
+            {
+                if (_leftPathBackwardHistory == null)
+                {
+                    _leftPathBackwardHistory = new List<string>();
+                }
+                _leftPathBackwardHistory.Add(value);
+                NotifyPropertyChanged("LeftListViewItems");
+                NotifyPropertyChanged("LeftSelectedDiskIndex");
+                NotifyPropertyChanged("LeftCurrentPathForTexBox");
             }
         }
 
-        public void Delete()
+            public List<ListViewItem> LeftListViewItems
         {
-            if (CurrentListViewItem!=null)
-                CurrentListViewItem.DeleteListViewItem(CurrentPathForTexBox + @"\" + CurrentListViewItem.Name);
-            NotifyPropertyChanged("LeftListViewItems");
+            get
+            {
+                return OpenFolder(LeftCurrentPath);
+            }
         }
 
-        public void Backward()
+            public ListViewItem LeftCurrentListViewItem
+        {
+            get
+            {
+                return _leftCurrentListViewItem;
+            }
+            set
+            {
+                _leftCurrentListViewItem = value;
+            }
+        }
+
+            public int LeftSelectedDiskIndex
+        {
+            get
+            {
+                if (_leftPathBackwardHistory != null)
+                {
+                    var currentDisk = _leftPathBackwardHistory.Last().Substring(0, 2);
+                    var currentDiskIndex = LeftComboBoxItems.FindIndex(x => x == currentDisk);
+                    return currentDiskIndex;
+                }
+                return 0;
+            }
+        }
+
+            public ICommand LeftCommandBackward
+        {
+            get
+            {
+                this._leftCommandBackward = new Command(x => LeftBackward());
+                return this._leftCommandBackward;
+            }
+        }
+
+            public ICommand LeftCommandForward
+        {
+            get
+            {
+                this._leftCommandForward = new Command(x => LeftForward());
+                return this._leftCommandForward;
+            }
+        }
+
+            public ICommand DleleteCommand
+            {
+                get
+                {
+                    this._leftDeleteCommand = new Command(x => LeftListViewItemDelete());
+                    return this._leftDeleteCommand;
+                }
+            }
+
+            
+
+            public void LeftBackward()
         {
             if (_leftPathBackwardHistory.Count > 1)
             {
@@ -205,12 +164,12 @@ namespace Shell
                 _leftPathForwardHistory.Add(LeftCurrentPath);
                 _leftPathBackwardHistory.RemoveAt(_leftPathBackwardHistory.Count - 1);
                 NotifyPropertyChanged("LeftListViewItems");
-                NotifyPropertyChanged("SelectedDiskIndex");
-                NotifyPropertyChanged("CurrentPathForTexBox");
+                NotifyPropertyChanged("LeftSelectedDiskIndex");
+                NotifyPropertyChanged("LeftCurrentPathForTexBox");
             }
         }
 
-        public void Forward()
+            public void LeftForward()
         {
             if (_leftPathForwardHistory.Count > 0)
             {
@@ -218,10 +177,180 @@ namespace Shell
                 _leftPathBackwardHistory.Add(_leftPathForwardHistory.Last());
                 _leftPathForwardHistory.RemoveAt(_leftPathForwardHistory.Count - 1);
                 NotifyPropertyChanged("LeftListViewItems");
-                NotifyPropertyChanged("SelectedDiskIndex");
-                NotifyPropertyChanged("CurrentPathForTexBox");
+                NotifyPropertyChanged("LeftSelectedDiskIndex");
+                NotifyPropertyChanged("LeftCurrentPathForTexBox");
             }
         }
+
+            public void LeftListViewItemDelete()
+        {
+            if (LeftCurrentListViewItem != null)
+                LeftCurrentListViewItem.DeleteListViewItem(LeftCurrentPathForTexBox + @"\" + LeftCurrentListViewItem.Name);
+            NotifyPropertyChanged("LeftListViewItems");
+        }
+
+        #endregion LeftListViewItem
+
+        #region RightListViewItems
+
+            public List<string> RightComboBoxItems
+        {
+            get
+            {
+                var logicalDiscs = new List<string>();
+                foreach (var diskName in Directory.GetLogicalDrives().ToList())
+                {
+                    logicalDiscs.Add(diskName.Substring(0, 2));
+                }
+                return logicalDiscs;
+            }
+        }
+
+            public string RightCurrentPathForTexBox
+        {
+            get
+            {
+                return RightCurrentPath;
+            }
+        }
+
+            public string RightSelectedDisc
+        {
+            get
+            {
+                return _rightSelectedDisc;
+            }
+            set
+            {
+                _rightSelectedDisc = String.Format("{0}{1}", value, "\\").Substring(0, 3);
+                if (_rightPathBackwardHistory != null && !_rightSelectedDisc.Equals(_rightPathBackwardHistory.Last()))
+                    RightCurrentPath = _rightSelectedDisc;
+            }
+        }
+
+            public string RightCurrentPath
+        {
+            get
+            {
+                if (_rightPathBackwardHistory == null || _rightPathBackwardHistory.Count == 0)
+                {
+                    _rightPathBackwardHistory = new List<string>();
+                    _rightPathBackwardHistory.Add(LeftComboBoxItems.First() + "\\");
+                }
+                return _rightPathBackwardHistory.Last();
+            }
+            set
+            {
+                if (_rightPathBackwardHistory == null)
+                {
+                    _rightPathBackwardHistory = new List<string>();
+                }
+                _rightPathBackwardHistory.Add(value);
+                NotifyPropertyChanged("RightListViewItems");
+                NotifyPropertyChanged("RightSelectedDiskIndex");
+                NotifyPropertyChanged("RightCurrentPathForTexBox");
+            }
+        }
+
+            public List<ListViewItem> RightListViewItems
+        {
+            get
+            {
+                return OpenFolder(RightCurrentPath);
+            }
+        }
+
+            public ListViewItem RightCurrentListViewItem
+            {
+                get
+                {
+                    return _rightCurrentListViewItem;
+                }
+                set
+                {
+                    _rightCurrentListViewItem = value;
+                }
+            }
+
+            public int RightSelectedDiskIndex
+            {
+                get
+                {
+                    if (_rightPathBackwardHistory != null)
+                    {
+                        var currentDisk = _rightPathBackwardHistory.Last().Substring(0, 2);
+                        var currentDiskIndex = RightComboBoxItems.FindIndex(x => x == currentDisk);
+                        return currentDiskIndex;
+                    }
+                    return 0;
+                }
+            }
+
+            public ICommand RightCommandBackward
+            {
+                get
+                {
+                    this._rightCommandBackward = new Command(x => RightBackward());
+                    return this._rightCommandBackward;
+                }
+            }
+
+            public ICommand RightCommandForward
+            {
+                get
+                {
+                    this._rightCommandForward = new Command(x => RightForward());
+                    return this._rightCommandForward;
+                }
+            }
+
+            public ICommand RightListViewSelect
+            {
+                get
+                {
+                    return new Command(x => RightSelectListView());
+                }
+            }
+
+            public void RightSelectListView()
+            {
+                _selectedList = 2; 
+            }
+
+            public void RightBackward()
+            {
+                if (_rightPathBackwardHistory.Count > 1)
+                {
+                    _rightPathForwardHistory.Add(RightCurrentPath);
+                    _rightPathBackwardHistory.RemoveAt(_rightPathBackwardHistory.Count - 1);
+                    NotifyPropertyChanged("RightListViewItems");
+                    NotifyPropertyChanged("RightSelectedDiskIndex");
+                    NotifyPropertyChanged("RightCurrentPathForTexBox");
+                }
+            }
+
+            public void RightForward()
+            {
+                if (_rightPathForwardHistory.Count > 0)
+                {
+                    _rightPathBackwardHistory.Add(_rightPathForwardHistory.Last());
+                    _rightPathForwardHistory.RemoveAt(_rightPathForwardHistory.Count - 1);
+                    NotifyPropertyChanged("RightListViewItems");
+                    NotifyPropertyChanged("RightSelectedDiskIndex");
+                    NotifyPropertyChanged("RightCurrentPathForTexBox");
+                }
+            }
+
+            public void RightListViewItemDelete()
+            {
+                if (RightCurrentListViewItem != null)
+                    RightCurrentListViewItem.DeleteListViewItem(RightCurrentPathForTexBox + @"\" + RightCurrentListViewItem.Name);
+                NotifyPropertyChanged("RightListViewItems");
+            }
+
+        #endregion RightListViewItems 
+
+        
 
         public static List<ListViewItem> OpenFolder(string pathToFolder)
         {
@@ -254,9 +383,14 @@ namespace Shell
             return listViewItems;
         }
 
-        public static void ClearPathForwardHistory()
+        public static void ClearLeftPathForwardHistory()
         {
             _leftPathForwardHistory.Clear();
+        }
+
+        public static void ClearRightPathForwardHistory()
+        {
+            _rightPathForwardHistory.Clear();
         }
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
